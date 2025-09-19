@@ -91,6 +91,11 @@
     "characterUpdated": "شخصیت ویرایش شد",
     "confirmDelete": "آیا از حذف این شخصیت اطمینان دارید؟"
   },
+  "notFound": {
+    "title": "صفحه یافت نشد",
+    "description": "متأسفیم، صفحه مورد نظر شما وجود ندارد.",
+    "backHome": "بازگشت به صفحه اصلی"
+  },
   "centuries": {
     "century10": "قرن ۱۰",
     "century11": "قرن ۱۱",
