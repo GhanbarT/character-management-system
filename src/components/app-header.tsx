@@ -27,7 +27,7 @@ export function AppHeader({ showNavigation = true }: AppHeaderProps) {
 
   return (
     <header className="bg-card/50 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div className="mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Title */}
           <div className="flex items-center gap-2">

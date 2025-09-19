@@ -58,6 +58,10 @@
     "mystic": "Mystic",
     "historian": "Historian"
   },
+  "charactersForm": {
+    "genderRequire":"Gender selection is required",
+    "fieldRequire": "Field of activity selection is required"
+  },
   "upload": {
     "textFiles": "Text Files",
     "audioFiles": "Audio Files",

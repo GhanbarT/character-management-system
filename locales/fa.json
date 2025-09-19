@@ -58,6 +58,10 @@
     "mystic": "عارف",
     "historian": "مورخ"
   },
+  "charactersForm": {
+    "genderRequire":"انتخاب جنسیت الزامی است",
+    "fieldRequire": "انتخاب حوزه فعالیت الزامی است"
+  },
   "upload": {
     "textFiles": "فایل‌های متنی",
     "audioFiles": "فایل‌های صوتی",

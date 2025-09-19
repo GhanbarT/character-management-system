@@ -6,14 +6,36 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/animate-ui/primitives/radix/dropdown-menu';
+} from '@/components/animate-ui/components/radix/dropdown-menu';
 import { Laptop2, Moon, Sun } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
   const t = useTranslations('theme');
+  // Add a state to track if we are on the client
+  const [mounted, setMounted] = useState(false);
+
+  // Only run on the client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render theme-dependent content until mounted
+  if (!mounted) {
+    return (
+      <Button
+        variant="secondary"
+        className="rounded-md px-2 py-2 text-sm"
+        aria-label="Loading theme"
+        disabled
+      >
+        <Laptop2 className="h-4 w-4" />
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu modal={false}>

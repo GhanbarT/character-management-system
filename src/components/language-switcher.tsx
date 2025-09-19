@@ -1,11 +1,12 @@
 'use client';
+
 import { Button } from '@/components/animate-ui/components/buttons/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/animate-ui/primitives/radix/dropdown-menu';
+} from '@/components/animate-ui/components/radix/dropdown-menu';
 import { Check, Languages } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
@@ -30,7 +31,8 @@ export function LanguageSwitcher() {
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
+      {/* Add suppressHydrationWarning */}
+      <DropdownMenuTrigger asChild suppressHydrationWarning>
         <Button variant="ghost" size="sm" className="gap-2">
           <Languages className="h-4 w-4" />
           <span className="hidden sm:inline">{currentLang?.name}</span>
