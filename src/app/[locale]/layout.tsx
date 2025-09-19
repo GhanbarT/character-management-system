@@ -1,7 +1,7 @@
 import { AppHeader } from '@/components/app-header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
-import { VazirmatnFont } from '@/font';
+import { Playfair, VazirmatnFont } from '@/font';
 import { getDirection } from '@/i18n/direction';
 import { routing } from '@/i18n/routing';
 import { Analytics } from '@vercel/analytics/next';
@@ -9,23 +9,18 @@ import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { Playfair_Display } from 'next/font/google';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type React from 'react';
 import '../globals.css';
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  title: 'سامانه مدیریت شخصیت‌های ایرانی | Persian Characters Management System',
-  description:
-    'سیستم جامع مدیریت اطلاعات شاعران، نویسندگان و منجمان ایرانی | Comprehensive management system for Persian poets, writers, and astronomers',
-  generator: 'v0.app',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+  return {
+    title: t('meta.title'),
+    description: t('meta.description'),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -34,7 +29,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -48,7 +42,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`font-sans ${VazirmatnFont.className} ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
+        className={`font-sans ${VazirmatnFont.className} ${GeistSans.variable} ${GeistMono.variable} ${Playfair.variable}`}
       >
         <ThemeProvider
           attribute="class"

@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/animate-ui/components/buttons/button';
-import { BookOpen, Menu, X } from 'lucide-react';
-import { ThemeSwitcher } from '@/components/theme-switcher';
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { useTranslations, useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 import { cn } from '@/lib/utils';
+import { BookOpen, Menu, X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface AppHeaderProps {
   showNavigation?: boolean;
@@ -16,7 +16,6 @@ interface AppHeaderProps {
 export function AppHeader({ showNavigation = true }: AppHeaderProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isRTL = locale === 'fa';
 
@@ -41,14 +40,11 @@ export function AppHeader({ showNavigation = true }: AppHeaderProps) {
           {showNavigation && (
             <nav className="hidden items-center gap-4 md:flex">
               {navigationItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant="ghost"
-                  onClick={() => router.push(item.href)}
-                  className="text-sm"
-                >
-                  {item.label}
-                </Button>
+                <Link key={item.href} href={item.href}>
+                  <Button variant="ghost" className="text-sm">
+                    {item.label}
+                  </Button>
+                </Link>
               ))}
             </nav>
           )}
@@ -77,17 +73,11 @@ export function AppHeader({ showNavigation = true }: AppHeaderProps) {
           <nav className="mt-4 border-t pt-4 md:hidden">
             <div className="flex flex-col gap-2">
               {navigationItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant="ghost"
-                  onClick={() => {
-                    router.push(item.href);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={cn('justify-start', isRTL && 'justify-end')}
-                >
-                  {item.label}
-                </Button>
+                <Link key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className={cn('justify-start', isRTL && 'justify-end')}>
+                    {item.label}
+                  </Button>
+                </Link>
               ))}
             </div>
           </nav>

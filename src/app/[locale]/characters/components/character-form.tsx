@@ -24,7 +24,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { type Character, type CreateCharacterInput, CreateCharacterSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AlertCircle, CheckCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -168,7 +168,7 @@ export function CharacterForm({ character, open, onOpenChange, onSubmit }: Chara
           <DialogDescription>{t('auth.enterCharacterInfo')}</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={form.handleSubmit(handleSubmit as any)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Card>
               <CardHeader>

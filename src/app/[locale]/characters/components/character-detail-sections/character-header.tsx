@@ -14,8 +14,6 @@ interface CharacterHeaderProps {
   character: Character;
 }
 
-const MAX_LIKE = 300; // Consistent with CharacterDetail
-
 export function CharacterHeader({ character }: CharacterHeaderProps) {
   const t = useTranslations();
   const [liked, setLiked] = useState(false);

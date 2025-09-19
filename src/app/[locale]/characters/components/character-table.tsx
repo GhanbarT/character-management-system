@@ -18,12 +18,12 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  Row,
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import { Edit, Eye, MoreHorizontal } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import { CharacterTableContent } from './character-table-sections/character-table-content';
 import { CharacterTablePagination } from './character-table-sections/character-table-pagination';
@@ -48,7 +48,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'avatar',
         header: t('characters.image'),
-        cell: ({ row }: any) => (
+        cell: ({ row }: { row: Row<Character> }) => (
           <Avatar className="h-10 w-10">
             <AvatarImage
               src={row.getValue('avatar') || '/placeholder.svg'}
@@ -62,13 +62,15 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'name',
         header: t('characters.name'),
-        cell: ({ row }: any) => <div className="font-medium">{row.getValue('name')}</div>,
+        cell: ({ row }: { row: Row<Character> }) => (
+          <div className="font-medium">{row.getValue('name')}</div>
+        ),
         enableSorting: true,
       },
       {
         accessorKey: 'gender',
         header: t('characters.gender'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const gender = row.getValue('gender') as string;
           return <Badge variant="outline">{getTranslatedValue(t, 'gender', gender)}</Badge>;
         },
@@ -76,7 +78,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'birthDate',
         header: t('characters.birthDate'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const birthDate = row.getValue('birthDate');
           return (
             <div className="text-sm">
@@ -89,24 +91,25 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'deathDate',
         header: t('characters.deathDate'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const deathDate = row.getValue('deathDate');
           const display = deathDate || t('centuries.unknown');
-          // Only format if display is a number
-          return (
-            <div className="text-sm">
-              {isNaN(Number(display))
-                ? display
-                : new Intl.NumberFormat(locale, { useGrouping: false }).format(Number(display))}
-            </div>
-          );
+          let renderValue: string | number;
+          if (typeof display === 'string' || typeof display === 'number') {
+            renderValue = isNaN(Number(display))
+              ? display
+              : new Intl.NumberFormat(locale, { useGrouping: false }).format(Number(display));
+          } else {
+            renderValue = '';
+          }
+          return <div className="text-sm">{renderValue}</div>;
         },
         enableSorting: true,
       },
       {
         accessorKey: 'fieldOfActivity',
         header: t('characters.fieldOfActivity'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const field = row.getValue('fieldOfActivity') as string;
           return <Badge variant="secondary">{getTranslatedValue(t, 'field', field)}</Badge>;
         },
@@ -114,7 +117,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'works',
         header: t('characters.works'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const works = row.getValue('works') as string[];
           const count = works.length;
           return (
@@ -130,7 +133,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
           );
         },
         enableSorting: true,
-        sortingFn: (rowA: any, rowB: any, columnId: string) => {
+        sortingFn: (rowA: Row<Character>, rowB: Row<Character>, columnId: string) => {
           const a = rowA.getValue(columnId) as string[];
           const b = rowB.getValue(columnId) as string[];
           return a.length - b.length;
@@ -139,7 +142,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'status',
         header: t('characters.status'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const status = row.getValue('status') as string;
           return (
             <Badge variant={status === 'Active' ? 'default' : 'secondary'}>
@@ -151,7 +154,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         accessorKey: 'likes',
         header: t('characters.likes'),
-        cell: ({ row }: any) => {
+        cell: ({ row }: { row: Row<Character> }) => {
           const likes = row.getValue('likes');
           return (
             <div className="text-center font-medium">
@@ -164,7 +167,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
       {
         id: 'actions',
         header: t('characters.actions'),
-        cell: ({ row }: any) => (
+        cell: ({ row }: { row: Row<Character> }) => (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <RippleButton variant="ghost" className="h-8 w-8 p-0">
@@ -219,7 +222,7 @@ export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterT
         onAdd={onAdd}
       />
       <CardContent>
-        <CharacterTableContent table={table} columns={columns} onEdit={onEdit} onView={onView} />
+        <CharacterTableContent table={table} columns={columns} />
         <CharacterTablePagination table={table} />
       </CardContent>
     </Card>
