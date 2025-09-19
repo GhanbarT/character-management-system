@@ -67,6 +67,7 @@
     "image": "Image",
     "worksCount": "{count} works",
     "nameRequired": "Name is required.",
+    "nameLength": "Name must be at least 2 characters long",
     "genderRequired": "Gender selection is required.",
     "birthDateRequired": "Birth date is required.",
     "fieldOfActivityRequired": "Field of activity selection is required."

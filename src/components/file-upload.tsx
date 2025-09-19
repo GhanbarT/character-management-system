@@ -1,9 +1,9 @@
 'use client';
 
 import { RippleButton } from '@/components/animate-ui/components/buttons/ripple';
+import { Progress } from '@/components/animate-ui/components/radix/progress';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/animate-ui/components/radix/progress';
 import { cn } from '@/lib/utils';
 import {
   AlertCircle,
@@ -39,18 +39,13 @@ interface UploadedFile {
 
 // Helper component for rendering consistent toast content
 interface ToastContentProps {
-  type: 'success' | 'error';
+  type?: 'success' | 'error';
   title: string;
   message: string;
 }
 
-const ToastContent = ({ type, title, message }: ToastContentProps) => (
+const ToastContent = ({ title, message }: ToastContentProps) => (
   <div className="flex items-start gap-3">
-    {type === 'success' ? (
-      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-    ) : (
-      <AlertCircle className="text-destructive mt-0.5 h-5 w-5 shrink-0" />
-    )}
     <div className="grid gap-1">
       <p className="text-sm font-medium">{title}</p>
       <p className="text-sm opacity-90">{message}</p>
@@ -120,6 +115,7 @@ export function FileUpload({
       setIsDragActive(false);
 
       const currentFileCount = uploadedFiles.length;
+      console.log(acceptedFiles.length);
       if (acceptedFiles.length + currentFileCount > maxFiles) {
         toast.error(
           <ToastContent
@@ -179,8 +175,8 @@ export function FileUpload({
   } = useDropzone({
     onDrop,
     accept,
-    maxSize,
-    maxFiles: maxFiles - uploadedFiles.length, // Only allow remaining files
+    /*maxSize,
+    maxFiles: maxFiles - uploadedFiles.length, // Only allow remaining files*/
     onDragEnter: () => setIsDragActive(true),
     onDragLeave: () => setIsDragActive(false),
   });
@@ -296,9 +292,9 @@ export function FileUpload({
               {uploadedFiles.map((uploadedFile) => (
                 <div key={uploadedFile.id} className="space-y-2 rounded-lg border p-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                    <div className="flex max-w-[70%] items-center gap-2">
                       {getFileIcon(uploadedFile.file.name)}
-                      <span className="max-w-[150px] truncate text-sm font-medium sm:max-w-none">
+                      <span className="max-w-[70%] truncate text-sm font-medium">
                         {uploadedFile.file.name}
                       </span>
                       <Badge variant="outline" className="text-xs">

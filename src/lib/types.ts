@@ -4,13 +4,13 @@ export const CharacterSchema = z.object({
   id: z.string(),
   name: z
     .string()
-    .min(2, 'Name must be at least 2 characters long')
+    .min(2, 'characters.nameLength')
     .refine((val) => !!val, {
       error: 'characters.nameRequired',
     }),
 
   gender: z.enum(['Male', 'Female']).refine((val) => !!val, {
-    message: 'characters.genderRequired',
+    error: 'characters.genderRequired',
   }),
 
   birthDate: z.string().min(1, { message: 'characters.birthDateRequired' }),
@@ -19,7 +19,7 @@ export const CharacterSchema = z.object({
   fieldOfActivity: z
     .enum(['Poet', 'Writer', 'Astronomer', 'Philosopher', 'Mystic', 'Historian'])
     .refine((val) => !!val, {
-      message: 'Field of activity selection is required',
+      message: 'characters.fieldOfActivityRequired',
     }),
 
   status: z.enum(['Active', 'Inactive']).default('Active'),

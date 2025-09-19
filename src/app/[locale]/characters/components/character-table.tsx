@@ -127,7 +127,6 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
               onClick={() => onView?.(row.original)}
             >
               {t('characters.worksCount', { count: works.length })}{' '}
-              {/* Use worksCount with interpolation */}
             </RippleButton>
           );
         },
@@ -160,7 +159,7 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
                 <MoreHorizontal className="h-4 w-4" />
               </RippleButton>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent>
               <DropdownMenuItem onClick={() => onView?.(row.original)}>
                 <Eye className="mr-2 h-4 w-4" />
                 {t('characters.viewDetails')}

@@ -217,7 +217,7 @@ export function CharacterForm({ character, open, onOpenChange, onSubmit }: Chara
                   </Select>
                   {form.formState.errors.gender && (
                     <p className="text-destructive mt-1 text-sm">
-                      {t(form.formState.errors.gender.message as string)}
+                      {t('characters.genderRequired')}
                     </p>
                   )}
                 </div>
@@ -243,7 +243,7 @@ export function CharacterForm({ character, open, onOpenChange, onSubmit }: Chara
                   </Select>
                   {form.formState.errors.fieldOfActivity && (
                     <p className="text-destructive mt-1 text-sm">
-                      {t(form.formState.errors.fieldOfActivity.message as string)}
+                      {t('characters.fieldOfActivityRequired')}
                     </p>
                   )}
                 </div>
