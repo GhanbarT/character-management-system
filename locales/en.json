@@ -179,5 +179,9 @@
   },
   "pagination": {
     "showingResults": "Showing {start} to {end} of {total} results"
+  },
+  "meta": {
+    "title": "Persian Characters Management System",
+    "description": "Comprehensive management system for Persian poets, writers, and astronomers"
   }
 }

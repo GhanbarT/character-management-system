@@ -3,10 +3,12 @@
 import { CharacterDetail } from '@/app/[locale]/characters/components/character-detail';
 import { CharacterForm } from '@/app/[locale]/characters/components/character-form';
 import { CharacterTable } from '@/app/[locale]/characters/components/character-table';
+import { mockCharacters } from '@/lib/mock-data';
 import type { Character, CreateCharacterInput } from '@/lib/types';
 import { useState } from 'react';
 
 export default function CharactersPage() {
+  const [characters, setCharacters] = useState<Character[]>(mockCharacters);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [editingCharacter, setEditingCharacter] = useState<Character | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -36,7 +38,12 @@ export default function CharactersPage() {
   return (
     <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-8">
-        <CharacterTable onView={handleView} onEdit={handleEdit} onAdd={handleAdd} />
+        <CharacterTable
+          characters={characters}
+          onView={handleView}
+          onEdit={handleEdit}
+          onAdd={handleAdd}
+        />
 
         <CharacterForm
           character={editingCharacter}

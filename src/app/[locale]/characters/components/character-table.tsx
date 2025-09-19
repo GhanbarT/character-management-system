@@ -1,30 +1,19 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
 import { RippleButton } from '@/components/animate-ui/components/buttons/ripple';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/animate-ui/components/radix/dropdown-menu';
-import { Input } from '@/components/ui/input';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import { mockCharacters } from '@/lib/mock-data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+import { getTranslatedValue } from '@/lib/getTranslatedValue';
 import type { Character } from '@/lib/types';
 import {
-  type ColumnDef,
   type ColumnFiltersState,
-  flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -32,45 +21,34 @@ import {
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table';
-import { Edit, Eye, MoreHorizontal, Plus, Search } from 'lucide-react';
-import { useTranslations } from 'next-intl'; // Removed useLocale as t() handles it
+import { Edit, Eye, MoreHorizontal } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useMemo, useState } from 'react';
+import { CharacterTableContent } from './character-table-sections/character-table-content';
+import { CharacterTablePagination } from './character-table-sections/character-table-pagination';
+import { CharacterTableToolbar } from './character-table-sections/character-table-toolbar';
 
 interface CharacterTableProps {
+  characters: Character[];
   onEdit?: (character: Character) => void;
   onView?: (character: Character) => void;
   onAdd?: () => void;
 }
 
-export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
-  const t = useTranslations(); // Initialize useTranslations
+export function CharacterTable({ characters, onEdit, onView, onAdd }: CharacterTableProps) {
+  const t = useTranslations();
+  const locale = useLocale();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
 
-  // Helper to get translated gender/field/status from schema's English values
-  const getTranslatedValue = (type: 'gender' | 'field' | 'status', value: string) => {
-    if (type === 'gender') {
-      // Map 'Male' to 'characters.male', 'Female' to 'characters.female'
-      return t(`characters.${value.toLowerCase()}`);
-    }
-    if (type === 'field') {
-      // Map 'Poet' to 'fields.poet', etc.
-      return t(`fields.${value.toLowerCase()}`);
-    }
-    if (type === 'status') {
-      // Map 'Active' to 'characters.active', 'Inactive' to 'characters.inactive'
-      return t(`characters.${value.toLowerCase()}`);
-    }
-    return value; // Fallback
-  };
-
-  const columns: ColumnDef<Character>[] = useMemo(
+  const columns = useMemo(
     () => [
       {
         accessorKey: 'avatar',
-        header: t('characters.image'), // Use translation key
-        cell: ({ row }) => (
+        header: t('characters.image'),
+        cell: ({ row }: any) => (
           <Avatar className="h-10 w-10">
             <AvatarImage
               src={row.getValue('avatar') || '/placeholder.svg'}
@@ -84,62 +62,88 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
       {
         accessorKey: 'name',
         header: t('characters.name'),
-        cell: ({ row }) => <div className="font-medium">{row.getValue('name')}</div>,
+        cell: ({ row }: any) => <div className="font-medium">{row.getValue('name')}</div>,
+        enableSorting: true,
       },
       {
         accessorKey: 'gender',
         header: t('characters.gender'),
-        cell: ({ row }) => {
-          const gender = row.getValue('gender') as string; // Will be 'Male' or 'Female'
-          return <Badge variant="outline">{getTranslatedValue('gender', gender)}</Badge>;
+        cell: ({ row }: any) => {
+          const gender = row.getValue('gender') as string;
+          return <Badge variant="outline">{getTranslatedValue(t, 'gender', gender)}</Badge>;
         },
       },
       {
         accessorKey: 'birthDate',
         header: t('characters.birthDate'),
-        cell: ({ row }) => <div className="text-sm">{row.getValue('birthDate')}</div>,
+        cell: ({ row }: any) => {
+          const birthDate = row.getValue('birthDate');
+          return (
+            <div className="text-sm">
+              {new Intl.NumberFormat(locale, { useGrouping: false }).format(Number(birthDate))}
+            </div>
+          );
+        },
+        enableSorting: true,
       },
       {
         accessorKey: 'deathDate',
         header: t('characters.deathDate'),
-        cell: ({ row }) => {
-          const deathDate = row.getValue('deathDate') as string;
-          return <div className="text-sm">{deathDate || t('centuries.unknown')}</div>;
+        cell: ({ row }: any) => {
+          const deathDate = row.getValue('deathDate');
+          const display = deathDate || t('centuries.unknown');
+          // Only format if display is a number
+          return (
+            <div className="text-sm">
+              {isNaN(Number(display))
+                ? display
+                : new Intl.NumberFormat(locale, { useGrouping: false }).format(Number(display))}
+            </div>
+          );
         },
+        enableSorting: true,
       },
       {
         accessorKey: 'fieldOfActivity',
         header: t('characters.fieldOfActivity'),
-        cell: ({ row }) => {
-          const field = row.getValue('fieldOfActivity') as string; // Will be 'Poet', 'Writer', etc.
-          return <Badge variant="secondary">{getTranslatedValue('field', field)}</Badge>;
+        cell: ({ row }: any) => {
+          const field = row.getValue('fieldOfActivity') as string;
+          return <Badge variant="secondary">{getTranslatedValue(t, 'field', field)}</Badge>;
         },
       },
       {
         accessorKey: 'works',
         header: t('characters.works'),
-        cell: ({ row }) => {
+        cell: ({ row }: any) => {
           const works = row.getValue('works') as string[];
+          const count = works.length;
           return (
             <RippleButton
               variant="link"
               className="text-primary h-auto p-0"
               onClick={() => onView?.(row.original)}
             >
-              {t('characters.worksCount', { count: works.length })}{' '}
+              {t('characters.worksCount', {
+                count: new Intl.NumberFormat(locale, { useGrouping: false }).format(count),
+              })}
             </RippleButton>
           );
         },
-        enableSorting: false,
+        enableSorting: true,
+        sortingFn: (rowA: any, rowB: any, columnId: string) => {
+          const a = rowA.getValue(columnId) as string[];
+          const b = rowB.getValue(columnId) as string[];
+          return a.length - b.length;
+        },
       },
       {
         accessorKey: 'status',
         header: t('characters.status'),
-        cell: ({ row }) => {
-          const status = row.getValue('status') as string; // Will be 'Active' or 'Inactive'
+        cell: ({ row }: any) => {
+          const status = row.getValue('status') as string;
           return (
             <Badge variant={status === 'Active' ? 'default' : 'secondary'}>
-              {getTranslatedValue('status', status)}
+              {getTranslatedValue(t, 'status', status)}
             </Badge>
           );
         },
@@ -147,12 +151,20 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
       {
         accessorKey: 'likes',
         header: t('characters.likes'),
-        cell: ({ row }) => <div className="text-center font-medium">{row.getValue('likes')}</div>,
+        cell: ({ row }: any) => {
+          const likes = row.getValue('likes');
+          return (
+            <div className="text-center font-medium">
+              {new Intl.NumberFormat(locale, { useGrouping: false }).format(Number(likes))}
+            </div>
+          );
+        },
+        enableSorting: true,
       },
       {
         id: 'actions',
         header: t('characters.actions'),
-        cell: ({ row }) => (
+        cell: ({ row }: any) => (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <RippleButton variant="ghost" className="h-8 w-8 p-0">
@@ -174,11 +186,11 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
         enableSorting: false,
       },
     ],
-    [getTranslatedValue, onEdit, onView, t],
+    [onEdit, onView, t, locale],
   );
 
   const table = useReactTable({
-    data: mockCharacters,
+    data: characters,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -201,95 +213,14 @@ export function CharacterTable({ onEdit, onView, onAdd }: CharacterTableProps) {
 
   return (
     <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="font-playfair">{t('characters.characterManagement')}</CardTitle>
-          <RippleButton onClick={onAdd} className="gap-2">
-            <Plus className="h-4 w-4" />
-            {t('characters.addNewCharacter')}
-          </RippleButton>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="relative max-w-sm flex-1">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
-            <Input
-              placeholder={t('search.charactersPlaceholder')} // Use translation key
-              value={globalFilter ?? ''}
-              onChange={(event) => setGlobalFilter(String(event.target.value))}
-              className="pl-10"
-            />
-          </div>
-        </div>
-      </CardHeader>
+      <CharacterTableToolbar
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
+        onAdd={onAdd}
+      />
       <CardContent>
-        <div className="rounded-md border">
-          <Table>
-            <TableHeader>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <TableHead key={header.id} className="text-right">
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  ))}
-                </TableRow>
-              ))}
-            </TableHeader>
-            <TableBody>
-              {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
-                  <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id} className="text-right">
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={columns.length} className="h-24 text-center">
-                    {t('messages.noCharactersFound')}
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
-
-        <div className="flex items-center justify-between space-x-2 py-4">
-          <div className="text-muted-foreground text-sm">
-            {t('pagination.showingResults', {
-              start:
-                table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1,
-              end: Math.min(
-                (table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize,
-                table.getFilteredRowModel().rows.length,
-              ),
-              total: table.getFilteredRowModel().rows.length,
-            })}
-          </div>
-          <div className="space-x-2">
-            <RippleButton
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              {t('navigation.previous')}
-            </RippleButton>
-            <RippleButton
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              {t('navigation.next')}
-            </RippleButton>
-          </div>
-        </div>
+        <CharacterTableContent table={table} columns={columns} onEdit={onEdit} onView={onView} />
+        <CharacterTablePagination table={table} />
       </CardContent>
     </Card>
   );

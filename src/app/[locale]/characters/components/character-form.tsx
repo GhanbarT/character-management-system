@@ -30,20 +30,14 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-// Helper component for rendering consistent toast content (can be a shared component)
 interface ToastContentProps {
-  type: 'success' | 'error';
+  type?: 'success' | 'error';
   title: string;
   message: string;
 }
 
-const ToastContent = ({ type, title, message }: ToastContentProps) => (
+const ToastContent = ({ title, message }: ToastContentProps) => (
   <div className="flex items-start gap-3">
-    {type === 'success' ? (
-      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-    ) : (
-      <AlertCircle className="text-destructive mt-0.5 h-5 w-5 shrink-0" />
-    )}
     <div className="grid gap-1">
       <p className="text-sm font-medium">{title}</p>
       <p className="text-sm opacity-90">{message}</p>
@@ -90,27 +84,24 @@ export function CharacterForm({ character, open, onOpenChange, onSubmit }: Chara
   // Effect to reset form when character prop or open state changes
   useEffect(() => {
     if (open) {
-      // Only reset when the dialog is opening or character changes while open
       form.reset({
         name: character?.name || '',
-        gender: character?.gender,
+        gender: character?.gender ?? 'Male',
         birthDate: character?.birthDate || '',
         deathDate: character?.deathDate || '',
-        fieldOfActivity: character?.fieldOfActivity,
-        status: character?.status,
+        fieldOfActivity: character?.fieldOfActivity ?? 'Poet',
+        status: character?.status ?? 'Active',
         biography: character?.biography || '',
         works: character?.works || [],
         avatar: character?.avatar || '',
         textResources: character?.textResources || [],
         audioResources: character?.audioResources || [],
-      });
+      } as CreateCharacterInput);
       setWorks(character?.works || []);
       setTextFiles(character?.textResources?.map((name) => ({ name }) as File) || []);
       setAudioFiles(character?.audioResources?.map((name) => ({ name }) as File) || []);
-      setImageFiles([]); // Clear image files on reset if not persisted
+      setImageFiles([]);
     } else {
-      // Optional: Clear form entirely when closing if you want to ensure it's fresh next time
-      form.reset();
       setWorks([]);
       setTextFiles([]);
       setAudioFiles([]);
@@ -177,7 +168,7 @@ export function CharacterForm({ character, open, onOpenChange, onSubmit }: Chara
           <DialogDescription>{t('auth.enterCharacterInfo')}</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(handleSubmit as any)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Card>
               <CardHeader>
