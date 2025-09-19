@@ -1,0 +1,104 @@
+{
+  "navigation": {
+    "welcome": "خوش آمدید",
+    "title": "سامانه شخصیت\u200Cهای ایرانی",
+    "login": "ورود",
+    "register": "ثبت نام",
+    "logout": "خروج",
+    "dashboard": "داشبورد",
+    "characters": "شخصیت‌ها",
+    "analytics": "تحلیل‌ها",
+    "profile": "پروفایل",
+    "settings": "تنظیمات",
+    "back": "بازگشت",
+    "next": "بعدی",
+    "previous": "قبلی",
+    "save": "ذخیره",
+    "cancel": "انصراف",
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "add": "افزودن",
+    "search": "جستجو",
+    "filter": "فیلتر"
+  },
+  "auth": {
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "fullName": "نام و نام خانوادگی",
+    "loginTitle": "ورود به سامانه",
+    "registerTitle": "ثبت نام در سامانه",
+    "loginDescription": "برای دسترسی به سامانه مدیریت شخصیت‌های ایرانی وارد شوید"
+  },
+  "characters": {
+    "characterManagement": "مدیریت شخصیت‌ها",
+    "addNewCharacter": "افزودن شخصیت جدید",
+    "editCharacter": "ویرایش شخصیت",
+    "characterDetails": "جزئیات شخصیت",
+    "name": "نام",
+    "gender": "جنسیت",
+    "male": "مرد",
+    "female": "زن",
+    "birthDate": "تاریخ تولد",
+    "deathDate": "تاریخ وفات",
+    "fieldOfActivity": "حوزه فعالیت",
+    "status": "وضعیت",
+    "active": "فعال",
+    "inactive": "غیرفعال",
+    "biography": "بیوگرافی",
+    "works": "آثار",
+    "likes": "لایک‌ها",
+    "actions": "عملیات",
+    "viewDetails": "مشاهده جزئیات"
+  },
+  "fields": {
+    "poet": "شاعر",
+    "writer": "نویسنده",
+    "astronomer": "منجم",
+    "philosopher": "فیلسوف",
+    "mystic": "عارف",
+    "historian": "مورخ"
+  },
+  "upload": {
+    "textFiles": "فایل‌های متنی",
+    "audioFiles": "فایل‌های صوتی",
+    "imageFiles": "فایل‌های تصویری",
+    "uploadFiles": "آپلود فایل‌ها",
+    "dragFilesHere": "فایل‌ها را اینجا بکشید",
+    "maxFiles": "حداکثر فایل",
+    "maxSize": "حداکثر حجم",
+    "uploadSuccess": "آپلود موفق",
+    "uploadError": "خطا در آپلود"
+  },
+  "dashboard": {
+    "analyticalDashboard": "داشبورد تحلیلی",
+    "totalCharacters": "کل شخصیت‌ها",
+    "mostPopular": "محبوب‌ترین",
+    "fieldsOfActivity": "حوزه‌های فعالیت",
+    "averageLikes": "میانگین لایک",
+    "radarChart": "نمودار راداری",
+    "barChart": "نمودار میله‌ای",
+    "distributionByField": "توزیع بر اساس حوزه فعالیت",
+    "distributionByBirthCentury": "توزیع بر اساس قرن تولد",
+    "popularityRanking": "رتبه‌بندی محبوبیت"
+  },
+  "messages": {
+    "noCharactersFound": "هیچ شخصیتی یافت نشد",
+    "characterAdded": "شخصیت جدید اضافه شد",
+    "characterUpdated": "شخصیت ویرایش شد",
+    "confirmDelete": "آیا از حذف این شخصیت اطمینان دارید؟"
+  },
+  "centuries": {
+    "century10": "قرن ۱۰",
+    "century11": "قرن ۱۱",
+    "century12": "قرن ۱۲",
+    "century13": "قرن ۱۳",
+    "century14": "قرن ۱۴",
+    "unknown": "نامشخص"
+  },
+  "theme": {
+    "theme": "تم",
+    "light": "روشن",
+    "dark": "تیره",
+    "system": "سیستم"
+  }
+}

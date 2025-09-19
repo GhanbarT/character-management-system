@@ -1,0 +1,104 @@
+{
+  "navigation": {
+    "welcome": "Welcome",
+    "title": "Persian Characters System",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "characters": "Characters",
+    "analytics": "Analytics",
+    "profile": "Profile",
+    "settings": "Settings",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "loginTitle": "Login to System",
+    "registerTitle": "Register to System",
+    "loginDescription": "Login to access the Persian Characters Management System"
+  },
+  "characters": {
+    "characterManagement": "Character Management",
+    "addNewCharacter": "Add New Character",
+    "editCharacter": "Edit Character",
+    "characterDetails": "Character Details",
+    "name": "Name",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "birthDate": "Birth Date",
+    "deathDate": "Death Date",
+    "fieldOfActivity": "Field of Activity",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "biography": "Biography",
+    "works": "Works",
+    "likes": "Likes",
+    "actions": "Actions",
+    "viewDetails": "View Details"
+  },
+  "fields": {
+    "poet": "Poet",
+    "writer": "Writer",
+    "astronomer": "Astronomer",
+    "philosopher": "Philosopher",
+    "mystic": "Mystic",
+    "historian": "Historian"
+  },
+  "upload": {
+    "textFiles": "Text Files",
+    "audioFiles": "Audio Files",
+    "imageFiles": "Image Files",
+    "uploadFiles": "Upload Files",
+    "dragFilesHere": "Drag files here",
+    "maxFiles": "Max files",
+    "maxSize": "Max size",
+    "uploadSuccess": "Upload successful",
+    "uploadError": "Upload error"
+  },
+  "dashboard": {
+    "analyticalDashboard": "Analytical Dashboard",
+    "totalCharacters": "Total Characters",
+    "mostPopular": "Most Popular",
+    "fieldsOfActivity": "Fields of Activity",
+    "averageLikes": "Average Likes",
+    "radarChart": "Radar Chart",
+    "barChart": "Bar Chart",
+    "distributionByField": "Distribution by Field",
+    "distributionByBirthCentury": "Distribution by Birth Century",
+    "popularityRanking": "Popularity Ranking"
+  },
+  "messages": {
+    "noCharactersFound": "No characters found",
+    "characterAdded": "Character added successfully",
+    "characterUpdated": "Character updated successfully",
+    "confirmDelete": "Are you sure you want to delete this character?"
+  },
+  "centuries": {
+    "century10": "10th Century",
+    "century11": "11th Century",
+    "century12": "12th Century",
+    "century13": "13th Century",
+    "century14": "14th Century",
+    "unknown": "Unknown"
+  },
+  "theme": {
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}
