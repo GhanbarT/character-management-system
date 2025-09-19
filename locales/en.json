@@ -21,7 +21,8 @@
     "search": "Search",
     "filter": "Filter",
     "resources": "Resources",
-    "download": "Download"
+    "download": "Download",
+    "sortBy": "Sort by {column}"
   },
   "auth": {
     "email": "Email",

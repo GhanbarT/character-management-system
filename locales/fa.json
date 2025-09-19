@@ -21,7 +21,8 @@
     "search": "جستجو",
     "filter": "فیلتر",
     "resources": "منابع",
-    "download": "دانلود"
+    "download": "دانلود",
+    "sortBy": "مرتب‌سازی بر اساس {column}"
   },
   "auth": {
     "email": "ایمیل",
