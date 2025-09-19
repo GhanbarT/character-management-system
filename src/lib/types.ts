@@ -2,13 +2,18 @@ import { z } from 'zod';
 
 export const CharacterSchema = z.object({
   id: z.string(),
-  name: z.string().min(2, 'Name must be at least 2 characters long'),
+  name: z
+    .string()
+    .min(2, 'Name must be at least 2 characters long')
+    .refine((val) => !!val, {
+      error: 'characters.nameRequired',
+    }),
 
   gender: z.enum(['Male', 'Female']).refine((val) => !!val, {
-    message: 'Gender selection is required',
+    message: 'characters.genderRequired',
   }),
 
-  birthDate: z.string().min(1, 'Birth date is required'),
+  birthDate: z.string().min(1, { message: 'characters.birthDateRequired' }),
   deathDate: z.string().optional(),
 
   fieldOfActivity: z

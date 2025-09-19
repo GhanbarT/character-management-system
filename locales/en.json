@@ -19,7 +19,9 @@
     "delete": "Delete",
     "add": "Add",
     "search": "Search",
-    "filter": "Filter"
+    "filter": "Filter",
+    "resources": "Resources",
+    "download": "Download"
   },
   "auth": {
     "email": "Email",
@@ -27,7 +29,8 @@
     "fullName": "Full Name",
     "loginTitle": "Login to System",
     "registerTitle": "Register to System",
-    "loginDescription": "Login to access the Persian Characters Management System"
+    "loginDescription": "Login to access the Persian Characters Management System",
+    "enterCharacterInfo": "Enter complete character information"
   },
   "characters": {
     "characterManagement": "Character Management",
@@ -48,7 +51,25 @@
     "works": "Works",
     "likes": "Likes",
     "actions": "Actions",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "basicInformation": "Basic Information",
+    "dateAndBiography": "Date & Biography",
+    "fullNamePlaceholder": "Full name",
+    "selectGender": "Select gender",
+    "selectFieldOfActivity": "Select field of activity",
+    "selectStatus": "Select status",
+    "birthDatePlaceholder": "e.g.: 1325",
+    "deathDatePlaceholder": "e.g.: 1390 (optional)",
+    "biographyPlaceholder": "Brief description of life and works...",
+    "imageURL": "Image URL",
+    "imageURLPlaceholder": "Character image URL",
+    "newWorkName": "New work name",
+    "image": "Image",
+    "worksCount": "{count} works",
+    "nameRequired": "Name is required.",
+    "genderRequired": "Gender selection is required.",
+    "birthDateRequired": "Birth date is required.",
+    "fieldOfActivityRequired": "Field of activity selection is required."
   },
   "fields": {
     "poet": "Poet",
@@ -71,7 +92,37 @@
     "maxFiles": "Max files",
     "maxSize": "Max size",
     "uploadSuccess": "Upload successful",
-    "uploadError": "Upload error"
+    "uploadError": "Upload error",
+    "uploadFilesOfType": "Upload {type} Files",
+    "dragActive": "Drop the files here...",
+    "dragInactive": "Drag & drop files here, or click to select",
+    "allowedFormats": "Allowed formats: {formats}",
+    "maxFilesDetails": "Max {maxFiles} files, up to {maxSizeMB}MB each",
+    "existingFiles": "Existing Files:",
+    "uploadedFiles": "Uploaded Files:",
+    "fileCount": "{current} of {max} files",
+    "successCount": "{count} successful uploads",
+    "allFormats": "All formats",
+    "types": {
+      "text": "Text",
+      "audio": "Audio",
+      "image": "Image",
+      "file": "File"
+    },
+    "status": {
+      "existing": "Existing",
+      "uploading": "Uploading...",
+      "success": "Upload complete",
+      "error": "Upload failed"
+    },
+    "toasts": {
+      "successTitle": "Upload Successful",
+      "errorTitle": "Upload Error",
+      "maxFilesError": "Maximum {maxFiles} files allowed.",
+      "maxSizeError": "File \"{fileName}\" exceeds the maximum size limit.",
+      "uploadFailedError": "Failed to upload \"{fileName}\".",
+      "uploadSuccess": "\"{fileName}\" uploaded successfully."
+    }
   },
   "dashboard": {
     "analyticalDashboard": "Analytical Dashboard",
@@ -83,13 +134,24 @@
     "barChart": "Bar Chart",
     "distributionByField": "Distribution by Field",
     "distributionByBirthCentury": "Distribution by Birth Century",
-    "popularityRanking": "Popularity Ranking"
+    "popularityRanking": "Popularity Ranking",
+    "userSatisfactionChart": "User Satisfaction Chart",
+    "popularityLevel": "Popularity Level",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
   },
   "messages": {
     "noCharactersFound": "No characters found",
     "characterAdded": "Character added successfully",
     "characterUpdated": "Character updated successfully",
-    "confirmDelete": "Are you sure you want to delete this character?"
+    "confirmDelete": "Are you sure you want to delete this character?",
+    "characterSavedDescription": "{name} information saved successfully.",
+    "noWorksFound": "No works recorded.",
+    "noTextResourcesFound": "No text resources recorded.",
+    "noAudioResourcesFound": "No audio resources recorded.",
+    "operationSuccessTitle": "Operation Successful",
+    "operationErrorTitle": "Operation Failed"
   },
   "notFound": {
     "title": "Page Not Found",
@@ -109,5 +171,11 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+  "search": {
+    "charactersPlaceholder": "Search characters..."
+  },
+  "pagination": {
+    "showingResults": "Showing {start} to {end} of {total} results"
   }
 }

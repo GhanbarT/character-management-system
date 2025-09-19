@@ -4,11 +4,11 @@ export const mockCharacters: Character[] = [
   {
     id: '1',
     name: 'حافظ شیرازی',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۱۳۲۵',
     deathDate: '۱۳۹۰',
-    fieldOfActivity: 'شاعر',
-    status: 'فعال',
+    fieldOfActivity: 'Poet',
+    status: 'Active',
     biography:
       'خواجه شمس‌الدین محمد حافظ شیرازی، معروف به حافظ، شاعر بزرگ قرن هشتم هجری و از مفاخر ادب فارسی است.',
     works: ['دیوان حافظ', 'غزلیات'],
@@ -22,11 +22,11 @@ export const mockCharacters: Character[] = [
   {
     id: '2',
     name: 'فردوسی',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۹۴۰',
     deathDate: '۱۰۲۰',
-    fieldOfActivity: 'شاعر',
-    status: 'فعال',
+    fieldOfActivity: 'Poet',
+    status: 'Active',
     biography: 'ابوالقاسم فردوسی توسی، شاعر بزرگ ایرانی و سراینده شاهنامه، حماسه ملی ایران.',
     works: ['شاهنامه'],
     likes: 189,
@@ -39,11 +39,11 @@ export const mockCharacters: Character[] = [
   {
     id: '3',
     name: 'عمر خیام',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۱۰۴۸',
     deathDate: '۱۱۳۱',
-    fieldOfActivity: 'منجم',
-    status: 'فعال',
+    fieldOfActivity: 'Astronomer',
+    status: 'Active',
     biography:
       'غیاث‌الدین ابوالفتح عمر بن ابراهیم خیام نیشابوری، ریاضی‌دان، منجم، فیلسوف و شاعر ایرانی.',
     works: ['رباعیات خیام', 'رساله در جبر و مقابله'],
@@ -57,11 +57,11 @@ export const mockCharacters: Character[] = [
   {
     id: '4',
     name: 'مولانا جلال‌الدین رومی',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۱۲۰۷',
     deathDate: '۱۲۷۳',
-    fieldOfActivity: 'عارف',
-    status: 'فعال',
+    fieldOfActivity: 'Mystic',
+    status: 'Active',
     biography: 'جلال‌الدین محمد بلخی معروف به مولوی، عارف و شاعر بزرگ قرن هفتم هجری.',
     works: ['مثنوی معنوی', 'دیوان شمس', 'فیه ما فیه'],
     likes: 298,
@@ -74,11 +74,11 @@ export const mockCharacters: Character[] = [
   {
     id: '5',
     name: 'سعدی شیرازی',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۱۲۱۰',
     deathDate: '۱۲۹۱',
-    fieldOfActivity: 'شاعر',
-    status: 'فعال',
+    fieldOfActivity: 'Poet',
+    status: 'Active',
     biography:
       'مصلح‌الدین بن عبدالله شیرازی معروف به سعدی، از بزرگترین شاعران و نویسندگان ادب فارسی.',
     works: ['گلستان', 'بوستان', 'دیوان سعدی'],
@@ -92,11 +92,11 @@ export const mockCharacters: Character[] = [
   {
     id: '6',
     name: 'ابن سینا',
-    gender: 'مرد',
+    gender: 'Male',
     birthDate: '۹۸۰',
     deathDate: '۱۰۳۷',
-    fieldOfActivity: 'فیلسوف',
-    status: 'فعال',
+    fieldOfActivity: 'Philosopher',
+    status: 'Active',
     biography: 'ابوعلی حسین بن عبدالله بن سینا، فیلسوف، پزشک و دانشمند بزرگ ایرانی.',
     works: ['قانون در طب', 'الشفاء', 'الاشارات والتنبیهات'],
     likes: 134,
@@ -112,7 +112,7 @@ export const getCharactersByField = (field: string) => {
   return mockCharacters.filter((char) => char.fieldOfActivity === field);
 };
 
-export const getCharactersByStatus = (status: 'فعال' | 'غیرفعال') => {
+export const getCharactersByStatus = (status: Character['status']) => {
   return mockCharacters.filter((char) => char.status === status);
 };
 

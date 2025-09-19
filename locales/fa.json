@@ -19,7 +19,9 @@
     "delete": "حذف",
     "add": "افزودن",
     "search": "جستجو",
-    "filter": "فیلتر"
+    "filter": "فیلتر",
+    "resources": "منابع",
+    "download": "دانلود"
   },
   "auth": {
     "email": "ایمیل",
@@ -27,7 +29,8 @@
     "fullName": "نام و نام خانوادگی",
     "loginTitle": "ورود به سامانه",
     "registerTitle": "ثبت نام در سامانه",
-    "loginDescription": "برای دسترسی به سامانه مدیریت شخصیت‌های ایرانی وارد شوید"
+    "loginDescription": "برای دسترسی به سامانه مدیریت شخصیت‌های ایرانی وارد شوید",
+    "enterCharacterInfo": "اطلاعات کامل شخصیت را وارد کنید"
   },
   "characters": {
     "characterManagement": "مدیریت شخصیت‌ها",
@@ -48,7 +51,25 @@
     "works": "آثار",
     "likes": "لایک‌ها",
     "actions": "عملیات",
-    "viewDetails": "مشاهده جزئیات"
+    "viewDetails": "مشاهده جزئیات",
+    "basicInformation": "اطلاعات پایه",
+    "dateAndBiography": "تاریخ و بیوگرافی",
+    "fullNamePlaceholder": "نام و نام خانوادگی",
+    "selectGender": "انتخاب جنسیت",
+    "selectFieldOfActivity": "انتخاب حوزه فعالیت",
+    "selectStatus": "انتخاب وضعیت",
+    "birthDatePlaceholder": "مثال: ۱۳۲۵",
+    "deathDatePlaceholder": "مثال: ۱۳۹۰ (اختیاری)",
+    "biographyPlaceholder": "شرح مختصری از زندگی و آثار...",
+    "imageURL": "لینک تصویر",
+    "imageURLPlaceholder": "URL تصویر شخصیت",
+    "newWorkName": "نام اثر جدید",
+    "image": "تصویر",
+    "worksCount": "{count} اثر",
+    "nameRequired": "نام الزامی است.",
+    "genderRequired": "انتخاب جنسیت الزامی است.",
+    "birthDateRequired": "تاریخ تولد الزامی است.",
+    "fieldOfActivityRequired": "انتخاب حوزه فعالیت الزامی است."
   },
   "fields": {
     "poet": "شاعر",
@@ -71,7 +92,37 @@
     "maxFiles": "حداکثر فایل",
     "maxSize": "حداکثر حجم",
     "uploadSuccess": "آپلود موفق",
-    "uploadError": "خطا در آپلود"
+    "uploadError": "خطا در آپلود",
+    "uploadFilesOfType": "آپلود فایل‌های {type}",
+    "dragActive": "فایل‌ها را اینجا رها کنید...",
+    "dragInactive": "فایل‌ها را اینجا بکشید یا کلیک کنید",
+    "allowedFormats": "فرمت‌های مجاز: {formats}",
+    "maxFilesDetails": "حداکثر {maxFiles} فایل، هر فایل تا {maxSizeMB} مگابایت",
+    "existingFiles": "فایل‌های موجود:",
+    "uploadedFiles": "فایل‌های آپلود شده:",
+    "fileCount": "{current} از {max} فایل",
+    "successCount": "{count} آپلود موفق",
+    "allFormats": "همه فرمت‌ها",
+    "types": {
+      "text": "متنی",
+      "audio": "صوتی",
+      "image": "تصویری",
+      "file": "فایل"
+    },
+    "status": {
+      "existing": "موجود",
+      "uploading": "در حال آپلود...",
+      "success": "آپلود با موفقیت انجام شد",
+      "error": "خطا در آپلود فایل"
+    },
+    "toasts": {
+      "successTitle": "آپلود موفق",
+      "errorTitle": "خطا در آپلود",
+      "maxFilesError": "حداکثر {maxFiles} فایل مجاز است.",
+      "maxSizeError": "حجم فایل «{fileName}» بیش از حد مجاز است.",
+      "uploadFailedError": "آپلود فایل «{fileName}» با خطا مواجه شد.",
+      "uploadSuccess": "فایل «{fileName}» با موفقیت آپلود شد."
+    }
   },
   "dashboard": {
     "analyticalDashboard": "داشبورد تحلیلی",
@@ -83,13 +134,24 @@
     "barChart": "نمودار میله‌ای",
     "distributionByField": "توزیع بر اساس حوزه فعالیت",
     "distributionByBirthCentury": "توزیع بر اساس قرن تولد",
-    "popularityRanking": "رتبه‌بندی محبوبیت"
+    "popularityRanking": "رتبه‌بندی محبوبیت",
+    "userSatisfactionChart": "نمودار رضایت کاربران",
+    "popularityLevel": "میزان محبوبیت",
+    "low": "کم",
+    "medium": "متوسط",
+    "high": "زیاد"
   },
   "messages": {
     "noCharactersFound": "هیچ شخصیتی یافت نشد",
     "characterAdded": "شخصیت جدید اضافه شد",
     "characterUpdated": "شخصیت ویرایش شد",
-    "confirmDelete": "آیا از حذف این شخصیت اطمینان دارید؟"
+    "confirmDelete": "آیا از حذف این شخصیت اطمینان دارید؟",
+    "characterSavedDescription": "اطلاعات «{name}» با موفقیت ذخیره شد.",
+    "noWorksFound": "هیچ اثری ثبت نشده است.",
+    "noTextResourcesFound": "هیچ منبع متنی ثبت نشده است.",
+    "noAudioResourcesFound": "هیچ منبع صوتی ثبت نشده است.",
+    "operationSuccessTitle": "عملیات موفقیت آمیز",
+    "operationErrorTitle": "عملیات ناموفق"
   },
   "notFound": {
     "title": "صفحه یافت نشد",
@@ -109,5 +171,11 @@
     "light": "روشن",
     "dark": "تیره",
     "system": "سیستم"
+  },
+  "search": {
+    "charactersPlaceholder": "جستجو در شخصیت‌ها..."
+  },
+  "pagination": {
+    "showingResults": "نمایش {start} تا {end} از {total} نتیجه"
   }
 }
