@@ -31,7 +31,12 @@
     "loginTitle": "Login to System",
     "registerTitle": "Register to System",
     "loginDescription": "Login to access the Persian Characters Management System",
-    "enterCharacterInfo": "Enter complete character information"
+    "enterCharacterInfo": "Enter complete character information",
+    "emailPlaceholder": "example@email.com",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailInvalid": "Invalid email address",
+    "passwordMin": "Password must be at least 6 characters long",
+    "fullNameMin": "Full name must be at least 2 characters long"
   },
   "characters": {
     "characterManagement": "Character Management",
@@ -141,7 +146,17 @@
     "popularityLevel": "Popularity Level",
     "low": "Low",
     "medium": "Medium",
-    "high": "High"
+    "high": "High",
+    "registeredCharacters": "Registered characters",
+    "largestCategory": "Largest category",
+    "secondCategory": "Second category",
+    "characterManagement": "Character Management",
+    "characterManagementDescription": "Complete Persian character management system is ready",
+    "characterManagementDetails": "You can add new characters, edit existing information, and upload text and audio resources.",
+    "viewCharactersList": "View Characters List",
+    "analyticalDashboardDescription": "Analytical charts and character statistics",
+    "analyticalDashboardDetails": "View radar and bar charts to analyze character distribution by field of activity and birth century.",
+    "viewAnalyticalDashboard": "View Analytical Dashboard"
   },
   "messages": {
     "noCharactersFound": "No characters found",

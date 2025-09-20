@@ -31,7 +31,12 @@
     "loginTitle": "ورود به سامانه",
     "registerTitle": "ثبت نام در سامانه",
     "loginDescription": "برای دسترسی به سامانه مدیریت شخصیت‌های ایرانی وارد شوید",
-    "enterCharacterInfo": "اطلاعات کامل شخصیت را وارد کنید"
+    "enterCharacterInfo": "اطلاعات کامل شخصیت را وارد کنید",
+    "emailPlaceholder": "مثال: example@email.com",
+    "fullNamePlaceholder": "نام کامل خود را وارد کنید",
+    "emailInvalid": "ایمیل نامعتبر است",
+    "passwordMin": "رمز عبور باید حداقل ۶ کاراکتر باشد",
+    "fullNameMin": "نام کامل باید حداقل ۲ کاراکتر باشد"
   },
   "characters": {
     "characterManagement": "مدیریت شخصیت‌ها",
@@ -140,7 +145,17 @@
     "popularityLevel": "میزان محبوبیت",
     "low": "کم",
     "medium": "متوسط",
-    "high": "زیاد"
+    "high": "زیاد",
+    "registeredCharacters": "شخصیت‌های ثبت شده",
+    "largestCategory": "بیشترین دسته‌بندی",
+    "secondCategory": "دسته دوم",
+    "characterManagement": "مدیریت شخصیت‌ها",
+    "characterManagementDescription": "سیستم کامل مدیریت شخصیت‌های ایرانی آماده است",
+    "characterManagementDetails": "شما می‌توانید شخصیت‌های جدید اضافه کنید، اطلاعات موجود را ویرایش کنید و منابع متنی و صوتی آپلود کنید.",
+    "viewCharactersList": "مشاهده لیست شخصیت‌ها",
+    "analyticalDashboardDescription": "نمودارهای تحلیلی و آماری شخصیت‌ها",
+    "analyticalDashboardDetails": "مشاهده نمودارهای راداری و میله‌ای برای تحلیل توزیع شخصیت‌ها بر اساس حوزه فعالیت و قرن تولد.",
+    "viewAnalyticalDashboard": "مشاهده داشبورد تحلیلی"
   },
   "messages": {
     "noCharactersFound": "هیچ شخصیتی یافت نشد",
