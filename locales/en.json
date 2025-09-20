@@ -147,6 +147,11 @@
     "low": "Low",
     "medium": "Medium",
     "high": "High",
+    "likes": "Likes",
+    "count": "Count",
+    "field": "Field",
+    "century": "Century",
+    "characters": "Character",
     "registeredCharacters": "Registered characters",
     "largestCategory": "Largest category",
     "secondCategory": "Second category",
@@ -156,7 +161,15 @@
     "viewCharactersList": "View Characters List",
     "analyticalDashboardDescription": "Analytical charts and character statistics",
     "analyticalDashboardDetails": "View radar and bar charts to analyze character distribution by field of activity and birth century.",
-    "viewAnalyticalDashboard": "View Analytical Dashboard"
+    "viewAnalyticalDashboard": "View Analytical Dashboard",
+    "likesPerCharacter": "Likes per character",
+    "radarChartDistribution": "Distribution by field (Radar Chart)",
+    "barChartBirthCentury": "Distribution by birth century (Bar Chart)",
+    "characterCount": "Character count",
+    "activityFieldDistributionSummary": "Summary of activity field distribution",
+    "selectFieldOfActivity": "Select field of activity",
+    "allFields": "All fields",
+    "popularityRankingChartTitle": "Popularity Ranking Chart"
   },
   "messages": {
     "noCharactersFound": "No characters found",
