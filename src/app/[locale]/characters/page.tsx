@@ -8,7 +8,7 @@ import type { Character, CreateCharacterInput } from '@/lib/types';
 import { useState } from 'react';
 
 export default function CharactersPage() {
-  const [characters, setCharacters] = useState<Character[]>(mockCharacters);
+  const [characters] = useState<Character[]>(mockCharacters);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [editingCharacter, setEditingCharacter] = useState<Character | null>(null);
   const [showForm, setShowForm] = useState(false);

@@ -55,8 +55,8 @@ export function AuthForm({ onLoginSuccess }: AuthFormProps) {
     mode: 'onSubmit',
   });
 
-  const handleTabChange = (tab: 'login' | 'register') => {
-    setActiveTab(tab);
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab as 'login' | 'register');
     if (tab === 'login') {
       resetLogin();
     } else {

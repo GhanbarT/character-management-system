@@ -22,10 +22,7 @@ export const CharacterSchema = z.object({
       message: 'characters.fieldOfActivityRequired',
     }),
 
-  status: z
-    .enum(['Active', 'Inactive'])
-    .default('Active')
-    .transform((val) => val ?? 'Active'),
+  status: z.enum(['Active', 'Inactive']).default('Active'),
   biography: z.string().optional(),
   works: z.array(z.string()).default([]),
   likes: z.number().default(0),
